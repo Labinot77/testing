@@ -13,21 +13,37 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Open+Sans:wght@400;600&display=swap');
 
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} */
+}
 
 body {
   font-family: 'Open Sans', sans-serif;
   color: #eaeaea;
-  background: radial-gradient(circle at 20% 20%, #d4d4d4 0%, #adadad 100%);
-  line-height: 1.6;
   overflow-x: hidden;
-    background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(10,10,25,0.95));
 }
 
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: stars 100s linear infinite;
+  opacity: 0.3;
+  transform: translate(-25%, -25%);
+}
+
+.wrapper {
+ background: radial-gradient(circle at 20% 20%, #d4d4d4 0%, #adadad 100%);
+  line-height: 1.6;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(10,10,25,0.95));
+
+}
 /* ====== HERO SECTION ====== */
 
 .landing {
@@ -42,18 +58,6 @@ body {
 } 
 
 /* Subtle animated stars */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-  animation: stars 100s linear infinite;
-  opacity: 0.3;
-  transform: translate(-25%, -25%);
-}
 
 
 .hero-inner {
@@ -103,41 +107,65 @@ body::before {
 .hero {
   color: white;
   width: 100%;
-  height: 100vh;
   position:relative;
+  padding-bottom: 20vh ;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .hero-card {
   position: sticky;
-  top: 0;               /* same stick position for every card */
-  z-index: 1;              /* baseline */
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.06);
+  top: 0;
+  z-index: 1;
+  margin: 0 auto 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
   padding: 1.5rem;
   max-width: 70vw;
   transition: box-shadow .15s;
-  margin-bottom: 1rem
 }
 
-.hero-card:nth-child(2) {
-  top: 20px
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(255, 255, 255, 0.15);
 }
 
-.hero-card:nth-child(3) {
-  top: 40px
-}
 
-.hero-card:nth-child(4) {
-  top: 60px
-}
-
+.hero-card:nth-child(1) { top: 0px; }
+.hero-card:nth-child(2) { top: 20px; }
+.hero-card:nth-child(3) { top: 40px; }
+.hero-card:nth-child(4) { top: 60px; }
+.hero-card:nth-child(5) { top: 80px; }
+.hero-card:nth-child(6) { top: 100px; }
+.hero-card:nth-child(7) { top: 120px; }
+.hero-card:nth-child(8) { top: 140px; }
+.hero-card:nth-child(9) { top: 170px; }
 .hero-card-content {
   display: flex;
   gap: 1rem
 }
 
+#backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  background-color: #ffd54d;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* Anims  */
 

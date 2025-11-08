@@ -1,28 +1,16 @@
-  const track = document.querySelector('.carousel-track');
-  const cards = Array.from(track.children);
-  const nextButton = document.querySelector('.carousel-btn.next');
-  const prevButton = document.querySelector('.carousel-btn.prev');
+const backToTop = document.getElementById('backToTop');
 
-  let index = 0;
-  const cardsPerView = 3;
+window.addEventListener('scroll', () => {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPosition = window.scrollY;
 
-  function updateCarousel() {
-    const offset = index * (track.children[0].getBoundingClientRect().width + 24); // 24px gap
-    track.style.transform = `translateX(-${offset}px)`;
+  if (scrollPosition > scrollableHeight - 100) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
   }
+});
 
-  nextButton.addEventListener('click', () => {
-    if (index < cards.length - cardsPerView) {
-      index++;
-      updateCarousel();
-    }
-  });
-
-  prevButton.addEventListener('click', () => {
-    if (index > 0) {
-      index--;
-      updateCarousel();
-    }
-  });
-
-  window.addEventListener('resize', updateCarousel);
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
